@@ -13,3 +13,4 @@ Reference: https://docs.microsoft.com/en-us/virtualization/windowscontainers/qui
     ![](Win-desktop-HyperV.png)
 - Docker Daemon status
     -   PowerShell: `> Start-Service Docker`
+- `docker pull mcr.microsoft.com/windows/nanoserver:1903`
