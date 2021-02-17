@@ -14,6 +14,6 @@ Reference: https://docs.microsoft.com/en-us/virtualization/windowscontainers/qui
     - PowerShell: `> Install-WindowsFeature -Name Hyper-V -IncludeManagementTools`
 - Docker Daemon status
     - PowerShell: `> Start-Service Docker`
-- `docker pull mcr.microsoft.com/windows/nanoserver:1903`
-    - If you see an error message that says `no matching manifest for <...> in the manifest list entries`, make sure Docker isn't configured to run Linux containers.
+- `docker pull mcr.microsoft.com/windows/servercore:ltsc2019`
+
 
