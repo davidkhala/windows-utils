@@ -9,7 +9,7 @@ Reference: https://docs.microsoft.com/en-us/virtualization/windowscontainers/qui
 1. `Restart-Computer -Force`
 
 ## Trouble shoot
-- Hyper-V status check
-    -   
+- Hyper-V status check  
+    ![](Win-desktop-HyperV.png)
 - Docker Daemon status
     -   PowerShell: `> Start-Service Docker`
