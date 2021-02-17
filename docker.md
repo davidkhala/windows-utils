@@ -8,11 +8,6 @@ Reference: https://docs.microsoft.com/en-us/virtualization/windowscontainers/qui
       > When PowerShell asks you whether to trust the package source 'DockerDefault', type `A` to continue the installation.
 1. `Restart-Computer -Force`
 
-## docker SUDO: elevated as admin
-New-LocalGroup -Name 'docker-users' -Description 'docker Users Group';
-Add-LocalGroupMember -Group 'Administrators' -Member ('docker-users') –Verbose;
-Add-LocalGroupMember -Group 'docker-users' -Member ('{$env:UserName}','Administrators') –Verbose;
-
 ## Trouble shoot
 - **Run as administrator**
 - Hyper-V status check  
