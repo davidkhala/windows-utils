@@ -8,3 +8,8 @@ Reference: https://docs.microsoft.com/en-us/virtualization/windowscontainers/qui
       > When PowerShell asks you whether to trust the package source 'DockerDefault', type `A` to continue the installation.
 1. `Restart-Computer -Force`
 
+## Trouble shoot
+- Hyper-V status check
+    -   
+- Docker Daemon status
+    -   PowerShell: `> Start-Service Docker`
