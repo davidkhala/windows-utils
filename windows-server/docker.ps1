@@ -8,8 +8,6 @@ function Install-Docker {
         
     )
     if ($Kernal = ='Linux') {
-        # Enable Nested Virtualization if you’re running Docker Containers using Linux Virtual Machine running on Hyper-V.
-        Get-VM WinContainerHost | Set-VMProcessor -ExposeVirtualizationExtensions $true
         Install-Module DockerProvider
         Install-Package Docker -ProviderName DockerProvider # -RequiredVersion preview
         [Environment]::SetEnvironmentVariable("LCOW_SUPPORTED", "1", "Machine")
