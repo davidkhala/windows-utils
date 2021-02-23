@@ -1,7 +1,8 @@
 function Get-WebFile {
 
     param (
-        $Uri
+        [Parameter(Mandatory)]
+        [string]$Uri,
         $Path
     )
     Invoke-WebRequest -Uri $Uri -OutFile $Path
