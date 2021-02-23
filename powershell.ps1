@@ -7,5 +7,10 @@ function Get-WebFile {
         [string]$Path
     )
 
+    
+    if (!$Path) { 
+        $Path = (Split-Path $Uri -Leaf)
+    }
+    
     Invoke-WebRequest -Uri $Uri -OutFile $Path -UseBasicParsing
 }
