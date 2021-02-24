@@ -1,4 +1,15 @@
 # PowerShell
+## Alternative for bash
+- `set -e`: quit when error seen. 
+    ```
+        try
+    {
+    blabla
+    }
+    catch
+    {
+    "$_"
+    }  
 
 ## Philosophy
 - Don't over complicate things. Keep it simple and use the most straight forward way to accomplish a task. 
@@ -10,32 +21,17 @@
 - When naming your functions in PowerShell, use a Pascal case name with an approved verb and a singular noun.
 - In PowerShell, there's a specific list of approved verbs. It's important to choose an approved verb in PowerShell when functions are added to a module. The module **generates a warning message at load time if you choose an unapproved verb**. That warning message makes your functions look unprofessional. Unapproved verbs also limit the discoverability of your functions.
     ```
+    [Group] Common          [Verb] Add, Clear, Close, Copy
+    [Group] Lifecycle       [Verb] Approve, Assert, Complete, Confirm, Deny, Disable, Enable
+    [Group] Data            [Verb] Backup, Checkpoint, Compare, Compress, Convert, ConvertFrom, ConvertTo, Dismount, Edit
+    [Group] Security        [Verb] Block
+    [Group] Communications  [Verb] Connect, Disconnect
+    [Group] Diagnostic      [Verb] Debug
+    
     Verb        Group
     ----        -----
-    Add         Common
-    Approve     Lifecycle
-    Assert      Lifecycle
-    Backup      Data
-    Block       Security
-    Checkpoint  Data
-    Clear       Common
-    Close       Common
-    Compare     Data
-    Complete    Lifecycle
-    Compress    Data
-    Confirm     Lifecycle
-    Connect     Communications
-    Convert     Data
-    ConvertFrom Data
-    ConvertTo   Data
-    Copy        Common
-    Debug       Diagnostic
-    Deny        Lifecycle
-    Disable     Lifecycle
-    Disconnect  Communications
-    Dismount    Data
-    Edit        Data
-    Enable      Lifecycle
+    
+    [WIP]
     Enter       Common
     Exit        Common
     Expand      Data
