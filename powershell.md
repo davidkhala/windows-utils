@@ -2,15 +2,12 @@
 ## Alternative for bash
 - `set -e`: quit when error seen. 
     ```
-        try
-    {
-    blabla
-    }
-    catch
-    {
-    "$_"
-    }  
-
+        try{
+            blabla
+        } catch{
+            "$_"
+        }  
+    ```
 ## Philosophy
 - Don't over complicate things. Keep it simple and use the most straight forward way to accomplish a task. 
 - Avoid aliases and positional parameters in any code that you reuse. Format your code for readability. 
