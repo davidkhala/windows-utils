@@ -21,3 +21,7 @@ function Use-RemoteSigned {
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
     
 }
+function Ping-Shell {
+    echo "pong"
+    #TODO Delete after test
+}
