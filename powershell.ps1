@@ -21,3 +21,10 @@ function Use-RemoteSigned {
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
     
 }
+function Execute-Remote{
+    param (
+        [Parameter(Position = 0, Mandatory)]
+        [string]$Uri
+    )
+    (Invoke-WebRequest $Uri).Content | Invoke-Expression
+}
