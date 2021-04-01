@@ -21,7 +21,7 @@ function Use-RemoteSigned {
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
     
 }
-function Execute-Remote{
+function Invoke-RemoteScript{
     param (
         [Parameter(Position = 0, Mandatory)]
         [string]$Uri
