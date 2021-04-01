@@ -7,7 +7,7 @@ function _clone {
         [string]$orgName,
         [Parameter(Position = 2, Mandatory)]
         [string]$projectName,
-        [Parameter(Position = 3, Mandatory)]
+        [Parameter(Position = 3)]
         [string]$branch
     )
     
@@ -24,6 +24,8 @@ function _clone {
         git checkout $branch
     }
     echo "${orgPath}\${projectName}"
+    cd -
+    cd -
 }
 function Get-GO-Repos {
     param (
@@ -33,15 +35,41 @@ function Get-GO-Repos {
         [string]$branch
     )
 	
-    
-    if ($reposURL -match '^github') {
-        Get-GO-Repos "https://${reposURL}.git" $branch
-    }
-    elseif ($reposURL -match '^https://') {
-        $orgName = $reposURL.Split('/')[3]
-        $projectName = $reposURL.Split('/')[4]
+    try {
+        if ($reposURL -match '^github') {
+            Get-GO-Repos "https://${reposURL}.git" $branch
+        }
+        elseif ($reposURL -match '^https://') {
+            $orgName = $reposURL.Split('/')[3]
+            $projectName = $reposURL.Split('/')[4].Split('.')[0]
         
-        _clone $reposURL $orgName $projectName $branch
+            _clone $reposURL $orgName $projectName $branch
+        }
+    }
+    catch {
+        $_
+    }
+}
+function Remove-Go-Repos {
+    param (
+        [Parameter(Position = 0, Mandatory)]
+        [string]$reposURL
+    )
+    
+    try {
+        if ($reposURL -match '^github') {
+            Remove-GO-Repos "https://${reposURL}.git"
+        }
+        elseif ($reposURL -match '^https://') {
+            $GOPATH = $(go env GOPATH)
+            $orgName = $reposURL.Split('/')[3]
+            $orgPath = "${GOPATH}\src\github.com\${orgName}"
+            $projectName = $reposURL.Split('/')[4].Split('.')[0]
+            Remove-Item -Recurse -Force ${orgPath}\${projectName}
+        }
+    }
+    catch {
+        $_
     }
     
 }
