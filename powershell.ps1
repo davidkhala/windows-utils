@@ -14,7 +14,15 @@ function Get-WebFile {
     
     Invoke-WebRequest -Uri $Uri -OutFile $Path -UseBasicParsing
 }
-
+function Remove-RF {
+    # Remove File or Direcotry recursively with Force attitute, and skip if not exist
+    param (
+        [Parameter(Position = 0, Mandatory)]
+        [string]$Path
+    )
+    Remove-Item -Recurse -Force -ErrorAction Ignore "$Path"
+    
+}
 function Use-RemoteSigned {
     # 改为RemoteSigned 执行策略，以允许执行PowerShell脚本
     # 否则在Restricted策略情况下，不允许执行脚本
