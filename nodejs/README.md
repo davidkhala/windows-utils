@@ -15,4 +15,4 @@
   **************************************************************
 ```
 - `node-v12.21.0-x64.msi` install wizard can automate Windows Build Tools and Python installation as neccessary depency for node-gyp
-- 
+- npm global module path (cmd.exe): %AppData%\roaming\npm\node_modules
