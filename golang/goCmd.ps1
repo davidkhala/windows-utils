@@ -73,22 +73,3 @@ function Remove-Go-Repos {
     }
     
 }
-# TODO WIP
-function Install-Go-Repos {
-    # Get & Ensure
-    param (
-        [Parameter(Position = 0, Mandatory)]
-        [string]$reposURL,
-        [Parameter(Position = 1)]
-        [string]$branch
-    )
-    try {
-        Get-GO-Repos $reposURL $branch
-    }
-    catch {
-        $_
-    }
-    
-
-    
-}
