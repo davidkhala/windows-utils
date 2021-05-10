@@ -37,7 +37,7 @@ function Invoke-RemoteScript{
     (Invoke-WebRequest $Uri).Content | Invoke-Expression
 }
 function Disable-HyperV{
-    Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-Hypervisor
+    Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V
 }
 function Enable-HyperV{
     Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
