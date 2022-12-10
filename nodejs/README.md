@@ -1,4 +1,4 @@
-- node-gyp requires Visual Studio on windows
+- [node-gyp requires Visual Studio on windows](https://github.com/nodejs/node-gyp#on-windows)
 ```
   msvs_version not set from command line or npm config
   VCINSTALLDIR not set, not running in VS Command Prompt
@@ -14,5 +14,5 @@
   https://github.com/nodejs/node-gyp#on-windows
   **************************************************************
 ```
-- `node-v12.21.0-x64.msi` install wizard can automate Windows Build Tools and Python installation as neccessary depency for node-gyp
+- `node-v**.**.**-x64.msi` install wizard can automate Windows Build Tools and Python installation as neccessary depency for node-gyp inline. But not for your project when `npm i`
 - npm global module path : `$env:APPDATA\roaming\npm\node_modules`
