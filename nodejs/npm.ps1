@@ -11,3 +11,6 @@ function Clear-Global-Modules {
     
     
 }
+function Install-NodeGYP-Dependency{
+    npm install -g windows-build-tools
+}
