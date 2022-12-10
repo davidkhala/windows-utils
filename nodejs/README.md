@@ -14,5 +14,6 @@
   https://github.com/nodejs/node-gyp#on-windows
   **************************************************************
 ```
+  - [Microsoft's Node.js Guidelines for Windows](https://github.com/Microsoft/nodejs-guidelines/blob/master/windows-environment.md#compiling-native-addon-modules)
 - `node-v**.**.**-x64.msi` install wizard can automate Windows Build Tools and Python installation as neccessary depency for node-gyp inline. But not for your project when `npm i`
 - npm global module path : `$env:APPDATA\roaming\npm\node_modules`
