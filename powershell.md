@@ -1,4 +1,11 @@
 # PowerShell
+
+# Use remote script
+```
+(Invoke-WebRequest $Uri).Content | Invoke-Expression
+```
+The uri can be a Github raw file link
+
 ## Alternative for bash
 - `set -e`: quit when error seen. 
     ```
