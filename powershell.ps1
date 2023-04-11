@@ -42,3 +42,7 @@ function Disable-HyperV{
 function Enable-HyperV{
     Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 }
+function Add-Path($Path) {
+    $Path = [Environment]::GetEnvironmentVariable("PATH", "Machine") + [IO.Path]::PathSeparator + $Path
+    [Environment]::SetEnvironmentVariable( "Path", $Path, "Machine" )
+}
