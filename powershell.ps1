@@ -29,6 +29,9 @@ function Use-RemoteSigned {
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force
     
 }
+function Check-San{
+    echo G!
+}
 function Load-RemoteScriptFunctions{
     param (
         [Parameter(Position = 0, Mandatory)]
