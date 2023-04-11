@@ -30,7 +30,7 @@ function Use-RemoteSigned {
     
 }
 function Check-San{
-    echo G!
+    echo G! github.com/davidkhala/windows-utils/powershell.ps1 has been loaded!
 }
 function Load-RemoteScript{
     # source远程脚本，可用于加载远程PowerShell脚本中的所有函数到当前Powershell环境中，以直接调用
