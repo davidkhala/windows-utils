@@ -15,12 +15,10 @@ The uri can be a Github raw file link
             "$_"
         }  
     ```
-## Philosophy
-- Don't over complicate things. Keep it simple and use the most straight forward way to accomplish a task. 
-- Avoid aliases and positional parameters in any code that you reuse. Format your code for readability. 
-- Don't hardcode values; use parameters and variables. 
-- Don't write unnecessary code even if it doesn't hurt anything. It adds unnecessary complexity. Attention to detail goes a long way when writing any PowerShell code.
-- Develop a standard and stick to it.
+## Design Notes
+- PowerShell 7 is designed to coexist with Windows PowerShell 5.1
+- It's common in other languages like C# to use `==` for equality (ex: `5 == $value`) but that doesn't work with PowerShell.
+
 ### Function Naming
 - When naming your functions in PowerShell, use a Pascal case name with an approved verb and a singular noun.
 - In PowerShell, there's a specific list of approved verbs. It's important to choose an approved verb in PowerShell when functions are added to a module. The module **generates a warning message at load time if you choose an unapproved verb**. That warning message makes your functions look unprofessional. Unapproved verbs also limit the discoverability of your functions.
@@ -33,8 +31,4 @@ The uri can be a Github raw file link
     [Group] Diagnostic      [Verb] Debug, Measure, Ping, Repair, Resolve, Test, Trace
     [Group] Other           [Verb] Use
     ```
-### Design Notes
-- PowerShell 7 is designed to coexist with Windows PowerShell 5.1
-- It's common in other languages like C# to use `==` for equality (ex: `5 == $value`) but that doesn't work with PowerShell.
-## Reference
-- [PowerShell Source](https://github.com/powershell/powershell)
+
