@@ -29,12 +29,12 @@ function Use-RemoteSigned {
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force
     
 }
-function Invoke-RemoteScript{
+function Load-RemoteScriptFunctions{
     param (
         [Parameter(Position = 0, Mandatory)]
         [string]$Uri
     )
-    (Invoke-WebRequest $Uri).Content | Invoke-Expression
+    (Invoke-WebRequest -Uri $Uri -UseBasicParsing).Content | Invoke-Expression
 }
 function Disable-HyperV{
     Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V
