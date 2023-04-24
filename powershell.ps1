@@ -14,6 +14,13 @@ function Get-WebFile {
     
     Invoke-WebRequest -Uri $Uri -OutFile $Path -UseBasicParsing
 }
+function Which {
+     param (
+        [Parameter(Position = 0, Mandatory)]
+        [string]$Cmd,
+    )
+    Get-Command $Cmd
+}
 function Remove-RF {
     # Remove File or Direcotry recursively with Force attitute, and skip if not exist
     param (
