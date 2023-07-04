@@ -36,6 +36,10 @@ function Use-RemoteSigned {
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force
     
 }
+function Use-SUDO {
+    Set-ExecutionPolicy AllSigned -Force
+
+}
 function Check-San{
     echo G! github.com/davidkhala/windows-utils/powershell.ps1 has been loaded!
 }
