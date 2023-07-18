@@ -14,10 +14,10 @@ function Get-WebFile {
     
     Invoke-WebRequest -Uri $Uri -OutFile $Path -UseBasicParsing
 }
-function Which {
+function Find {
      param (
         [Parameter(Position = 0, Mandatory)]
-        [string]$Cmd,
+        [string]$Cmd
     )
     Get-Command $Cmd
 }
