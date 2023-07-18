@@ -1,10 +1,8 @@
 # PowerShell
 
-# Use remote script
-```
-(Invoke-WebRequest $Uri).Content | Invoke-Expression
-```
-The uri can be a Github raw file link
+## Use script
+- To use remote ps script: `(Invoke-WebRequest $Uri).Content | Invoke-Expression`
+  - The uri can be a Github raw file link
 
 ## Alternative for bash
 - `set -e`: quit when error seen. 
@@ -31,4 +29,4 @@ The uri can be a Github raw file link
     [Group] Diagnostic      [Verb] Debug, Measure, Ping, Repair, Resolve, Test, Trace
     [Group] Other           [Verb] Use
     ```
-
+    - `Get-Verb` to check above
