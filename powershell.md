@@ -14,6 +14,7 @@
             "$_"
         }  
     ```
+- use `invoke-expression .../any.ps1` as `source ...`
 ## Design Notes
 - PowerShell 7 is designed to coexist with Windows PowerShell 5.1
 - It's common in other languages like C# to use `==` for equality (ex: `5 == $value`) but that doesn't work with PowerShell.
