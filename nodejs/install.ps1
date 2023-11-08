@@ -1,4 +1,4 @@
 function Choco-Install {
-    choco install nodejs-lts
+    choco install -y nodejs-lts
     
 }
