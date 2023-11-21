@@ -1,5 +1,6 @@
 ## Install
 - Windows 10: Docker Desktop for windows
+  - Windows Home can only run the WSL 2 backend
   - Dependencies
     - WSL2: `wsl --update`
       - ```
