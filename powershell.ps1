@@ -1,3 +1,8 @@
+function Set-E{
+    # https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7.4#erroractionpreference
+    $ErrorActionPreference = "Stop"
+
+}
 function Get-WebFile {
     # Download file from Uri to local Path
     param (
