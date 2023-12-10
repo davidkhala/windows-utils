@@ -3,6 +3,15 @@ function Set-E{
     $ErrorActionPreference = "Stop"
 
 }
+function Run-Function{
+    param (
+        [Parameter(Position = 0, Mandatory)]
+        [string]$FuncName
+    )
+    Set-E
+    $sb = (get-command $FuncName -CommandType Function).ScriptBlock
+    Invoke-Command -scriptblock $sb
+}
 function Get-WebFile {
     # Download file from Uri to local Path
     param (
