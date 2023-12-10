@@ -8,7 +8,7 @@ function Run-Function{
         [Parameter(Position = 0, Mandatory)]
         [string]$FuncName
     )
-    Set-E
+    $ErrorActionPreference = "Stop"
     $sb = (get-command $FuncName -CommandType Function).ScriptBlock
     Invoke-Command -scriptblock $sb
 }
