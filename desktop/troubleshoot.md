@@ -2,3 +2,6 @@
   1. 以管理员身份运行cmd
   2. `net user defaultuser0 /DELETE`
   3. 删除C:\Users\defaultuser0\ 文件夹
+- 由于同一位置中存在不能定向的文件夹
+  - 原因：文件夹正在被OneDrive同步
+  - 解决：OneDrive 设置->管理备份->解除
