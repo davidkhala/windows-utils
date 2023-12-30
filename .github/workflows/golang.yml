@@ -13,10 +13,10 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@main
       - name: goCmd Test ^github.com 
         run: |
-          . .\golang\goCmd.ps1
+          . .\language\golang\goCmd.ps1
           Get-GO-Repos github.com/davidkhala/chaincode
           Remove-GO-Repos github.com/davidkhala/chaincode
       - name: goCmd Test ^https:// .git$
