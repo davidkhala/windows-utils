@@ -21,12 +21,12 @@ jobs:
           Remove-GO-Repos github.com/davidkhala/chaincode
       - name: goCmd Test ^https:// .git$
         run: |
-          . .\golang\goCmd.ps1
+          . .\language\golang\goCmd.ps1
           Get-GO-Repos https://github.com/davidkhala/chaincode.git
           Remove-GO-Repos https://github.com/davidkhala/chaincode.git
       - name: goCmd Test ^https://
         run: |
-          . .\golang\goCmd.ps1
+          . .\language\golang\goCmd.ps1
           Get-GO-Repos https://github.com/davidkhala/chaincode
           Remove-GO-Repos https://github.com/davidkhala/chaincode
         
