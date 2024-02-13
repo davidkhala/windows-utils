@@ -17,8 +17,8 @@ toml set --toml-path C:\ProgramData\Amazon\AmazonCloudWatchAgent\common-config.t
 
 }
 Start(){
-  # TODO check whether here are the place we need Set-ExecutionPolicy
-Set-ExecutionPolicy RemoteSigned # need privilege
+  
+Set-ExecutionPolicy RemoteSigned # grant privilege
 
 & "C:\Program Files\Amazon\AmazonCloudWatchAgent\amazon-cloudwatch-agent-ctl.ps1" -a fetch-config -m onPremise -s -c file:.\config.json # need privilege
 }
