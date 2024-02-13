@@ -21,3 +21,9 @@ function Start-CWAgent {
   & "C:\Program Files\Amazon\AmazonCloudWatchAgent\amazon-cloudwatch-agent-ctl.ps1" -a fetch-config -m onPremise -s -c file:.\config.json # need `run as administrator`
   # Once success, you can see a last line in console as `AmazonCloudWatchAgent has been started`
 }
+function Stop-CWAgent {
+  & "C:\Program Files\Amazon\AmazonCloudWatchAgent\amazon-cloudwatch-agent-ctl.ps1" -a stop
+}
+function Trace-CWAgent {
+  & "C:\Program Files\Amazon\AmazonCloudWatchAgent\amazon-cloudwatch-agent-ctl.ps1" -a status
+}
