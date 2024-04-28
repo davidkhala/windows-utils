@@ -54,6 +54,9 @@ function Use-SUDO {
     Set-ExecutionPolicy AllSigned -Force
 
 }
+function Use-AnyScript{
+    Set-ExecutionPolicy Unrestricted -Force
+}
 function Check-San{
     echo G! github.com/davidkhala/windows-utils/powershell.ps1 has been loaded!
 }
