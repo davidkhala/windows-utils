@@ -12,7 +12,7 @@ jobs:
     - uses: softprops/action-gh-release@master
       with: 
         body: latest build of vcpkg
-        name: nightly
+        name: vcpkg
         tag_name: vcpkg-latest
         files: vcpkg.exe
 
