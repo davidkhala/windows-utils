@@ -1,7 +1,7 @@
 name: vcpkg
-on: workflow_dispatch
+on: [workflow_dispatch, push]
 jobs:
-  build:
+  release:
    runs-on: windows-latest
    steps:
     - uses: actions/checkout@v4
@@ -9,4 +9,11 @@ jobs:
         repository: 'microsoft/vcpkg'
     - run: bootstrap-vcpkg.bat
       shell: cmd
+    - uses: softprops/action-gh-release@master
+      with: 
+        body: latest build of vcpkg
+        name: nightly
+        tag_name: latest
+        files: vcpkg.exe
+
 
