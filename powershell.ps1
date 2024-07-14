@@ -1,9 +1,9 @@
-function Set-E{
+function Set-E {
     # https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7.4#erroractionpreference
     $ErrorActionPreference = "Stop"
 
 }
-function Run-Function{
+function Invoke-Function {
     param (
         [Parameter(Position = 0, Mandatory)]
         [string]$FuncName
@@ -29,7 +29,7 @@ function Get-WebFile {
     Invoke-WebRequest -Uri $Uri -OutFile $Path -UseBasicParsing
 }
 function Find {
-     param (
+    param (
         [Parameter(Position = 0, Mandatory)]
         [string]$Cmd
     )
@@ -54,13 +54,13 @@ function Use-SUDO {
     Set-ExecutionPolicy AllSigned -Force
 
 }
-function Use-AnyScript{
+function Use-AnyScript {
     Set-ExecutionPolicy Unrestricted -Force
 }
-function Check-San{
+function Test-San {
     echo G! github.com/davidkhala/windows-utils/powershell.ps1 has been loaded!
 }
-function Load-RemoteScript{
+function Use-RemoteScript {
     # source远程脚本，可用于加载远程PowerShell脚本中的所有函数到当前Powershell环境中，以直接调用
     param (
         [Parameter(Position = 0, Mandatory)]
@@ -68,10 +68,10 @@ function Load-RemoteScript{
     )
     (Invoke-WebRequest -Uri $Uri -UseBasicParsing).Content | Invoke-Expression
 }
-function Disable-HyperV{
+function Disable-HyperV {
     Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V
 }
-function Enable-HyperV{
+function Enable-HyperV {
     Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 }
 function Add-Path($Path) {
@@ -79,7 +79,7 @@ function Add-Path($Path) {
     [Environment]::SetEnvironmentVariable( "Path", $NewPath, "Machine" )
     $env:Path += ";$Path" # make path change take effect immediately
 }
-function List-Env{
+function Show-Env {
     Get-ChildItem -Path Env:
 
 }
