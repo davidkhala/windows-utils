@@ -13,7 +13,7 @@ jobs:
       with: 
         body: latest build of vcpkg
         name: nightly
-        tag_name: latest
+        tag_name: vcpkg-latest
         files: vcpkg.exe
 
 
