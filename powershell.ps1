@@ -164,4 +164,5 @@ function Get-Path {
         where { $_ }
 }
 
-Export-ModuleMember -Function *
+# Export-ModuleMember -Function *
+# TODO Error: Export-ModuleMember : 只能从模块内调用 Export-ModuleMember cmdlet。
