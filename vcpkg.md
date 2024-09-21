@@ -8,3 +8,4 @@ Install by Visual Studio installer wizard
 [vcpkg.yaml](https://github.com/davidkhala/windows-utils/blob/master/.github/workflows/vcpkg.yaml) give an example of
 - build it from cloning open source repository
 - publish the output binary to [Github Release of this repository](https://github.com/davidkhala/windows-utils/releases)
+- build it in Github-hosted runner
