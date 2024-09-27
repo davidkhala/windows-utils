@@ -74,11 +74,7 @@ function Disable-HyperV {
 function Enable-HyperV {
     Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 }
-# function Add-Path($Path) {
-#     $NewPath = [Environment]::GetEnvironmentVariable("PATH", "Machine") + [IO.Path]::PathSeparator + $Path
-#     [Environment]::SetEnvironmentVariable( "Path", $NewPath, "Machine" )
-#     $env:Path += ";$Path" # make path change take effect immediately
-# }
+
 function Show-Env {
     Get-ChildItem -Path Env:
 
