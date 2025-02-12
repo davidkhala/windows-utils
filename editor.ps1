@@ -1,3 +1,5 @@
+$ErrorActionPreference = "Stop"
+
 function Append {
   param (
     [string]$file,
@@ -26,3 +28,5 @@ function Get-Properties {
   return ConvertFrom-StringData -StringData $content
 
 }
+
+Invoke-Expression ($args -join " ")

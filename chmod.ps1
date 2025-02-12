@@ -1,8 +1,8 @@
+$ErrorActionPreference = "Stop"
 function Protect-PrivKey() {
   # Source: https://stackoverflow.com/a/43317244
   # equivalent to chmod 400
   param(
-    [Parameter(Mandatory = $true)]
     [string] $Path
   )
 
