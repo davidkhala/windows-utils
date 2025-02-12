@@ -1,21 +1,28 @@
-function Append
-{
-   param (
-        [string]$content, 
-        [string]$file 
-    )
-   Add-Content -Path $file -Value "$content"
-}
-function Configure
-{
+function Append {
   param (
-        [string]$key, 
-        [string]$value,
-        [string]$file 
-    )
+    [string]$file,
+    [string]$content
+  )
+  Add-Content -Path $file -Value "$content"
+}
+function Configure {
+  param (
+    [string]$file,
+    [string]$key, 
+    [string]$value
+  )
     
-  $content = Get-Content -Path $filePath | Out-String
-  $data = ConvertFrom-StringData -StringData $content
+  
+  $data = Get-Properties $file
   $data["$key"] = "$value"
-  $data.GetEnumerator() | ForEach-Object { "$($_.Key)=$($_.Value)" } | Set-Content -Path $filePath
+  $data.GetEnumerator() | ForEach-Object { "$($_.Key)=$($_.Value)" } | Set-Content -Path $file
+}
+function Get-Properties {
+  param (
+    [string]$file
+  )
+  
+  $content = Get-Content -Path $file | Out-String
+  return ConvertFrom-StringData -StringData $content
+
 }

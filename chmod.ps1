@@ -1,9 +1,9 @@
-function Protect-PrivKey(){
+function Protect-PrivKey() {
   # Source: https://stackoverflow.com/a/43317244
   # equivalent to chmod 400
- param(
-      [Parameter(Mandatory=$true)]
-      [string] $Path,
+  param(
+    [Parameter(Mandatory = $true)]
+    [string] $Path
   )
 
   # Reset to remove explict permissions
