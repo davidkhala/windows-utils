@@ -8,17 +8,8 @@
 
 ## Alternative for bash
 
-- `set -e`: quit when error seen.
-
-    ```powershell
-        try{
-            blabla
-        } catch{
-            "$_"
-        }  
-    ```
-
-- use `invoke-expression .../any.ps1` as `source ...`
+- `set -e` -> [`$ErrorActionPreference = "Stop"`](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7.4#erroractionpreference)
+- `"$@"` -> `Invoke-Expression ($args -join " ")`
 
 ## Design Notes
 
