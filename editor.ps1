@@ -28,5 +28,6 @@ function Get-Properties {
   return ConvertFrom-StringData -StringData $content
 
 }
-
-Invoke-Expression ($args -join " ")
+if ($args.Count -gt 0) {
+  Invoke-Expression ($args -join " ")
+}
