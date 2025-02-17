@@ -55,6 +55,9 @@ function Show-Env {
     Get-ChildItem Env:
 }
 
+function PWSH-Version{
+    $PSVersionTable.PSVersion
+}
 
 # below is fork of https://gist.github.com/mkropat/c1226e0cc2ca941b23a9
 
