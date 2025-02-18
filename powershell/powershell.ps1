@@ -43,6 +43,9 @@ function Version {
     # Get current Powershell version 
     $PSVersionTable.PSVersion
 }
+function Install-Core {
+    winget install --id Microsoft.PowerShell --source winget
+}
 if ($args.Count -gt 0) {
     Invoke-Expression ($args -join " ")
 }
