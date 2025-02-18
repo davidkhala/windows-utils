@@ -1,29 +1,4 @@
-# PowerShell
 
-## Use script
-
-- Grant execution right: `Set-ExecutionPolicy Unrestricted -Force` as Admin
-- To use remote ps script: `(Invoke-WebRequest $Uri).Content | Invoke-Expression`
-  - The uri can be a Github raw file link
-
-## Alternative for bash
-
-- `set -e` -> [`$ErrorActionPreference = "Stop"`](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7.4#erroractionpreference)
-- `"$@"`
-
-  ```powershell
-
-  if ($args.Count -gt 0) {
-    Invoke-Expression ($args -join " ")
-  }
-
-  ```
-
-  - It only supports running in local like `./test.ps1 command list`
-
-## Design Notes
-
-- PowerShell 7 is designed to coexist with Windows PowerShell 5.1
 - It's common in other languages like C# to use `==` for equality (ex: `5 == $value`) but that doesn't work with PowerShell.
 
 ### Function Naming
