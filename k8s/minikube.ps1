@@ -1,6 +1,10 @@
 function Choco-Install {
   choco install minikube -y
 }
+function Install{
+  winget install Kubernetes.minikube
+}
+
 function Docker-Start {
   
   minikube start --container-runtime=docker --vm=true
