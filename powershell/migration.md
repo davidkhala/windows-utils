@@ -12,3 +12,11 @@
   ```
 
   - It only supports running in local like `./test.ps1 command list`
+- $@ within function
+  - use **splatting** in powershell
+  - ```
+    function Function-Gateway{
+      $params=@{} # create a hash table
+      Another-Command @params # use splatting to pass parameters
+    }
+    ```
