@@ -1,6 +1,12 @@
 $ErrorActionPreference = "Stop"
 # below is fork of https://gist.github.com/mkropat/c1226e0cc2ca941b23a9
 
+function pip-bin-Path {
+    # expected result: e.g. C:\Users\david\AppData\Local\Programs\Python\Python312\Scripts
+    # binary path for exe installed by `pip install ...`
+    (Split-Path (Get-Command python).Source) + '\Scripts'
+}
+
 function Add-Path {
     param(
         [Parameter(Mandatory = $true)]
