@@ -1,0 +1,19 @@
+name: databases
+
+on:
+    push:
+
+jobs:
+    mssql:
+        runs-on: windows-latest
+        steps:
+            - uses: actions/checkout@main
+            - run: ./database/mssql.ps1 Install-ODBC
+            - run: ./database/mssql.ps1 Install-ODBC 17
+            - run: ./database/mssql.ps1 Test-ODBC
+            - run: ./database/mssql.ps1 Test-ODBC 17
+    confluent:
+        runs-on: windows-latest
+        steps:
+            - uses: actions/checkout@main
+            - run: ./database/confluent.ps1 Install
