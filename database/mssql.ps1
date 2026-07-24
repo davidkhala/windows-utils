@@ -1,13 +1,12 @@
 $ErrorActionPreference = "Stop"
 
 
-
-function Install-ODBC {
+function Download {
     param(
         [ValidateSet("17", "18")]
         [string]$Version = "18"
     )
-
+    
     $downloadUrls = @{
         "18" = "https://go.microsoft.com/fwlink/?linkid=2358430"
         "17" = "https://go.microsoft.com/fwlink/?linkid=2361646"
@@ -15,12 +14,25 @@ function Install-ODBC {
 
     $downloadUrl = $downloadUrls[$Version]
     $outputPath = "$PWD\msodbcsql_$Version.msi"
-
+    
     Invoke-WebRequest -Uri $downloadUrl -OutFile $outputPath
-    Start-Process msiexec.exe -Wait -ArgumentList "/i `"$outputPath`" /norestart"
+}
+function Install-ODBC {
+    param(
+        [ValidateSet("17", "18")]
+        [string]$Version = "18"
+    )
+    Download -Version $Version
+    $outputPath = "$PWD\msodbcsql_$Version.msi"
 
-    # Optional: Clean up the MSI after installation
-    Remove-Item $outputPath -ErrorAction SilentlyContinue
+
+    $p = Start-Process msiexec.exe -Wait -PassThru -ArgumentList `
+        '/i', "`"$outputPath`"", '/qn', '/norestart', 'IACCEPTMSODBCSQLLICENSETERMS=YES'
+    if ($p.ExitCode -notin 0, 3010) {
+        throw "ODBC installation Failed. Exit with code $($p.ExitCode)"
+    }
+
+    Remove-Item $outputPath
 }
 
 function Test-ODBC {
@@ -31,14 +43,35 @@ function Test-ODBC {
 
     $driverName = if ($Version -eq "18") {
         "ODBC Driver 18 for SQL Server"
-    } else {
+    }
+    else {
         "ODBC Driver 17 for SQL Server"
     }
 
-    $installed = $null -ne (Get-OdbcDriver -Name $driverName -ErrorAction SilentlyContinue)
-    exit [int](-not $installed)
+    Get-OdbcDriver -Name $driverName -Platform "64-bit"
 }
 
+function Uninstall-ODBC {
+    param(
+        [ValidateSet("17", "18")]
+        [string]$Version = "18"
+    )
+    Download -Version $Version
+    $outputPath = "$PWD\msodbcsql_$Version.msi"
+    $p = Start-Process msiexec.exe -Wait -PassThru -ArgumentList `
+        '/x', "`"$outputPath`"", '/qn', '/norestart'
+    if ($p.ExitCode -notin 0, 3010) {
+        throw "ODBC uninstallation Failed. Exit with code $($p.ExitCode)"
+    }
+    Remove-Item $outputPath
+}
+function Test{
+    Install-ODBC
+
+    Test-ODBC
+    Uninstall-ODBC
+    Test-ODBC
+}
 
 if ($args.Count -gt 0) {
     Invoke-Expression ($args -join " ")
