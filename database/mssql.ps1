@@ -58,38 +58,34 @@ function Test-ODBC {
 }
 
 function Install-BCP {
-    param(
-        [ValidateSet("17", "18")]
-        [string]$Version = "18"
-    )
-
-    Install-ODBC -Version $Version
+    
+    # assume odbc is installed, if not install it first
+    
     Download-BCP
     $outputPath = "$PWD\MsSqlCmdLnUtils.msi"
-
     $p = Start-Process msiexec.exe -Wait -PassThru -ArgumentList `
-        '/i', "`"$outputPath`"", 'IACCEPTMSSQLCMDLNUTILSLICENSETERMS=YES', '/qn', '/norestart'
+        '/i', "`"$outputPath`"", 'IACCEPTMSSQLCMDLNUTILSLICENSETERMS=YES', '/qn', '/norestart' -Verb RunAs
     if ($p.ExitCode -notin 0, 3010) {
         throw "BCP installation failed. Exit with code $($p.ExitCode)"
     }
 
     Remove-Item $outputPath
-
-    . "$PSScriptRoot\..\powershell\path.ps1"
-    $directory = Join-Path $env:ProgramFiles "Microsoft SQL Server\Client SDK\ODBC\$($Version)0\Tools\Binn"
-    Add-Path -Path $directory -Container Machine
+    # bcp is ready in next new session.
 }
 
 function Test-BCP {
-    param(
-        [ValidateSet("17", "18")]
-        [string]$Version = "18"
-    )
+    bcp -v
+}
 
-    . "$PSScriptRoot\..\powershell\path.ps1"
-    $directory = Join-Path $env:ProgramFiles "Microsoft SQL Server\Client SDK\ODBC\$($Version)0\Tools\Binn"
-    Add-Path -Path $directory -Container Session
-    & (Join-Path $directory "bcp.exe") -v
+function Uninstall-BCP {
+    Download-BCP
+    $outputPath = "$PWD\MsSqlCmdLnUtils.msi"
+    $p = Start-Process msiexec.exe -Wait -PassThru -ArgumentList `
+        '/x', "`"$outputPath`"", '/qn', '/norestart' -Verb RunAs
+    if ($p.ExitCode -notin 0, 3010) {
+        throw "BCP uninstallation failed. Exit with code $($p.ExitCode)"
+    }
+    Remove-Item $outputPath
 }
 
 function Uninstall-ODBC {

@@ -4,11 +4,14 @@ jobs:
   release:
    runs-on: windows-latest
    steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@main
       with:
         repository: 'microsoft/vcpkg'
     - run: bootstrap-vcpkg.bat
       shell: cmd
+    - run: gh release delete vcpkg --repo ${{ github.repository }} --cleanup-tag --yes
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
     - uses: softprops/action-gh-release@master
       with: 
         name: vcpkg

@@ -4,18 +4,17 @@ on:
     push:
 
 jobs:
+    # bcp is pre-built in Github Runner. See in https://github.com/davidkhala/ci-cd-utils/blob/master/.github/workflows/environment.yml#L9
     mssql:
         runs-on: windows-latest
         steps:
             - uses: actions/checkout@main
             - run: ./database/mssql.ps1 Install-ODBC
-            - run: ./database/mssql.ps1 Install-ODBC 17
             - run: ./database/mssql.ps1 Test-ODBC
+            - run: ./database/mssql.ps1 Install-ODBC 17
             - run: ./database/mssql.ps1 Test-ODBC 17
-            - run: ./database/mssql.ps1 Install-BCP
-            - run: ./database/mssql.ps1 Test-BCP
-            - run: ./database/mssql.ps1 Install-BCP 17
-            - run: ./database/mssql.ps1 Test-BCP 17
+            - run: ./database/mssql.ps1 Uninstall-ODBC
+            - run: ./database/mssql.ps1 Uninstall-ODBC 17
     confluent:
         runs-on: windows-latest
         steps:
