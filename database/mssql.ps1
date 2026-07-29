@@ -23,35 +23,6 @@ function Download-BCP {
 
     Invoke-WebRequest -Uri "https://go.microsoft.com/fwlink/?linkid=2370127" -OutFile $outputPath
 }
-
-function Resolve-BCPDirectory {
-    param(
-        [ValidateSet("17", "18")]
-        [string]$Version = "18"
-    )
-
-    $versionFolder = "$($Version)0"
-    $command = Get-Command bcp -ErrorAction SilentlyContinue
-    if ($command -and $command.Source -like "*\ODBC\$versionFolder\*") {
-        return Split-Path $command.Source
-    }
-
-    $roots = @($env:ProgramFiles, ${env:ProgramFiles(x86)}) | Where-Object { $_ } | Select-Object -Unique
-    foreach ($root in $roots) {
-        $odbcRoot = Join-Path $root "Microsoft SQL Server\Client SDK\ODBC"
-        if (-not (Test-Path $odbcRoot)) {
-            continue
-        }
-
-        $candidates = Get-ChildItem -Path $odbcRoot -Filter bcp.exe -Recurse -ErrorAction SilentlyContinue |
-        Where-Object { $_.FullName -like "*\ODBC\$versionFolder\*" }
-        if ($candidates) {
-            return $candidates[0].DirectoryName
-        }
-    }
-
-    throw "Unable to locate bcp.exe for ODBC version $Version."
-}
 function Install-ODBC {
     param(
         [ValidateSet("17", "18")]
@@ -105,7 +76,8 @@ function Install-BCP {
     Remove-Item $outputPath
 
     . "$PSScriptRoot\..\powershell\path.ps1"
-    Add-Path -Path (Resolve-BCPDirectory -Version $Version) -Container Machine
+    $directory = Join-Path $env:ProgramFiles "Microsoft SQL Server\Client SDK\ODBC\$($Version)0\Tools\Binn"
+    Add-Path -Path $directory -Container Machine
 }
 
 function Test-BCP {
@@ -115,7 +87,7 @@ function Test-BCP {
     )
 
     . "$PSScriptRoot\..\powershell\path.ps1"
-    $directory = Resolve-BCPDirectory -Version $Version
+    $directory = Join-Path $env:ProgramFiles "Microsoft SQL Server\Client SDK\ODBC\$($Version)0\Tools\Binn"
     Add-Path -Path $directory -Container Session
     & (Join-Path $directory "bcp.exe") -v
 }
