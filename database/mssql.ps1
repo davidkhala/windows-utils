@@ -65,13 +65,7 @@ function Uninstall-ODBC {
     }
     Remove-Item $outputPath
 }
-function Test{
-    Install-ODBC
 
-    Test-ODBC
-    Uninstall-ODBC
-    Test-ODBC
-}
 
 if ($args.Count -gt 0) {
     Invoke-Expression ($args -join " ")
