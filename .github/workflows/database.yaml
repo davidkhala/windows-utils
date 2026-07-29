@@ -12,6 +12,10 @@ jobs:
             - run: ./database/mssql.ps1 Install-ODBC 17
             - run: ./database/mssql.ps1 Test-ODBC
             - run: ./database/mssql.ps1 Test-ODBC 17
+            - run: ./database/mssql.ps1 Install-BCP
+            - run: ./database/mssql.ps1 Test-BCP
+            - run: ./database/mssql.ps1 Install-BCP 17
+            - run: ./database/mssql.ps1 Test-BCP 17
     confluent:
         runs-on: windows-latest
         steps:
