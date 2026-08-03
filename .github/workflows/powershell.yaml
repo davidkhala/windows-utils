@@ -9,6 +9,6 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@main
-    - run: Invoke-Pester tests
+    - run: Invoke-Pester powershell/tests
     
     
