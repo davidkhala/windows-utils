@@ -12,6 +12,9 @@ function Use-SUDO {
 function Use-AnyScript {
     Set-ExecutionPolicy Unrestricted -Force
 }
+function Modernize-TLS {
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+}
 
 function Install-Core {
     winget install --id Microsoft.PowerShell --source winget
