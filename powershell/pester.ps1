@@ -24,12 +24,7 @@ function Uninstall {
     & icacls.exe $module /grant "*S-1-5-32-544:F" /inheritance:d /T
     Remove-Item -Path $module -Recurse -Force -Confirm:$false
 }
-function Version {
-    Get-Module Pester -ListAvailable
-}
-function Log {
-    Write-Host $args
-}
+
 if ($args.Count -gt 0) {
     Invoke-Expression ($args -join " ")
 }
