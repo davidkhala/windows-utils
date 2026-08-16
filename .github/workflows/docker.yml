@@ -1,0 +1,11 @@
+name: docker test
+
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  default:
+    runs-on: windows-latest
+    steps:
+      - run: docker context inspect default
+      
