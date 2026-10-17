@@ -16,7 +16,7 @@ function Modernize-TLS {
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 }
 
-function Install-Core {
+function Upgrade-Core {
     winget install --id Microsoft.PowerShell --source winget
 }
 if ($args.Count -gt 0) {
